@@ -1,0 +1,6 @@
+@Pinto.Api_HostAddress = http://localhost:5150
+
+GET {{Pinto.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
