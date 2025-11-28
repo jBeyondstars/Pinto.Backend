@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pinto.Infrastructure.Persistence;
@@ -11,9 +12,11 @@ using Pinto.Infrastructure.Persistence;
 namespace Pinto.Infrastructure.Migrations
 {
     [DbContext(typeof(PintoDbContext))]
-    partial class PintoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251128181454_AddCanvasData")]
+    partial class AddCanvasData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

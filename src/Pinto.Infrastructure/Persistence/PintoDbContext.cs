@@ -20,6 +20,7 @@ public class PintoDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
             entity.Property(e => e.Description).HasMaxLength(1000);
+            entity.Property(e => e.CanvasData).HasColumnType("jsonb");
             entity.HasIndex(e => e.OwnerId);
         });
     }

@@ -85,12 +85,24 @@ boards.MapDelete("/{id:guid}", async (Guid id, IBoardRepository repository, Canc
 })
 .WithName("DeleteBoard");
 
+boards.MapPut("/{id:guid}/canvas", async (Guid id, UpdateCanvasRequest request, IBoardRepository repository, CancellationToken ct) =>
+{
+    var board = await repository.GetByIdAsync(id, ct);
+    if (board is null) return Results.NotFound();
+
+    board.UpdateCanvas(request.CanvasData);
+    await repository.UpdateAsync(board, ct);
+    return Results.Ok(ToResponse(board));
+})
+.WithName("UpdateCanvas");
+
 app.Run();
 
 static BoardResponse ToResponse(Board board) => new(
     board.Id,
     board.Name,
     board.Description,
+    board.CanvasData,
     board.OwnerId,
     board.CreatedAt,
     board.UpdatedAt
