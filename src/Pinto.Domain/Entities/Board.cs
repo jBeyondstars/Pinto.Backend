@@ -24,9 +24,10 @@ public class Board
         };
     }
 
-    public void UpdateName(string name)
+    public void Update(string name, string? description)
     {
         Name = name;
+        Description = description;
         UpdatedAt = DateTime.UtcNow;
     }
 }
